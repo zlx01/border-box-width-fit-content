@@ -1,0 +1,2 @@
+"use strict";(self["webpackChunkborder_box_width_fit_content"]=self["webpackChunkborder_box_width_fit_content"]||[]).push([[443],{6079:function(t,e,n){n.r(e),n.d(e,{default:function(){return l}});var s=function(){var t=this,e=t._self._c;return e("div",{staticClass:"about"},[e("h1",{on:{click:t.test}},[t._v("This is an about page")])])},u=[],i=n(8848),o={name:"AboutView",methods:{test(){(0,i.Z)({message:"验证码错误",duration:0})}}},a=o,r=n(1001),c=(0,r.Z)(a,s,u,!1,null,null,null),l=c.exports}}]);
+//# sourceMappingURL=about.f6f306d9.js.map
