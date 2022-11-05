@@ -1,0 +1,38 @@
+name: build-deploy-gh-pages
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  TZ: Asia/Shanghai
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [16.x]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: build
+        run: yarn && yarn build
+      - name: git
+        # 注意打包路径
+        run: |
+          cd dist
+          git config --global user.name "${{github.actor}}"
+          git config --global user.email "${{github.actor}}@users.noreply.github.com"
+          git init
+          git add .
+          git commit -m "Deploy to GitHub Pages"
+          git push --force https://username:${{secrets.ACCESS_TOKEN}}@github.com/${{github.repository}}.git master:gh-pages
+          rm -fr .git
